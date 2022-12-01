@@ -4,12 +4,11 @@ public enum State {
     WaitingCommandStart,
     FirstQuestionPartOne,
     SecondQuestionPartOne,
-    WaitingClickInMenuChooseSpecificCard,
-    WaitingInputIncomeMoneyForSpecificCard,
-    WaitingClickInMenuChoosePaySystemForNewCard,
-    WaitingClickInMenuApproveDeleteSpecificCard,
-    WaitingClickNumberCardFromForTransaction,
-    WaitingInputNumberCardToForTransaction,
-    WaitingInputMoneyForTransaction,
-    WaitingClickOnInlineButtonInMenuInstruction
+    ThirdQuestionPartOne,
+    FourthQuestionPartOne,
+    FifthQuestionPartOne,
+    SixthQuestionPartOne,
+    SeventhQuestionPartOne
+
+
 }

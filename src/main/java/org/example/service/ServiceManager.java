@@ -25,6 +25,12 @@ public class ServiceManager {
 
         methods.put(State.WaitingCommandStart, mainMenuService::processCommandStart);
         methods.put(State.FirstQuestionPartOne, mainMenuService::processFirstQuestionPartOne);
+        methods.put(State.SecondQuestionPartOne, mainMenuService::processSecondQuestionPartOne);
+        methods.put(State.ThirdQuestionPartOne, mainMenuService::processThirdQuestionPartOne);
+        methods.put(State.FourthQuestionPartOne, mainMenuService::processFourthQuestionPartOne);
+        methods.put(State.FifthQuestionPartOne, mainMenuService::processFifthQuestionPartOne);
+        methods.put(State.SixthQuestionPartOne, mainMenuService::processSixthQuestionPartOne);
+        methods.put(State.SeventhQuestionPartOne, mainMenuService::processSeventhQuestionPartOne);
     }
 
     public SendMessage processUpdate(String textData, TransmittedData transmittedData) throws Exception {
