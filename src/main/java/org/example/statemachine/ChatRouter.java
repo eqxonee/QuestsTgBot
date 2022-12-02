@@ -5,6 +5,7 @@ import org.example.util.SystemStringsStorage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class ChatRouter {
         serviceManager = new ServiceManager();
     }
 
-    public SendMessage route(long chatId, String textData) throws Exception {
+    public SendPhoto route(long chatId, String textData) throws Exception {
 
         if(!chats.containsKey(chatId)){
             chats.put(chatId,new TransmittedData(chatId));

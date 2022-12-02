@@ -5,6 +5,7 @@ import org.example.service.handlers.StaticService;
 import org.example.statemachine.State;
 import org.example.statemachine.TransmittedData;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,15 +26,15 @@ public class ServiceManager {
 
         methods.put(State.WaitingCommandStart, mainMenuService::processCommandStart);
         methods.put(State.FirstQuestionPartOne, mainMenuService::processFirstQuestionPartOne);
-        methods.put(State.SecondQuestionPartOne, mainMenuService::processSecondQuestionPartOne);
+     /*   methods.put(State.SecondQuestionPartOne, mainMenuService::processSecondQuestionPartOne);
         methods.put(State.ThirdQuestionPartOne, mainMenuService::processThirdQuestionPartOne);
         methods.put(State.FourthQuestionPartOne, mainMenuService::processFourthQuestionPartOne);
         methods.put(State.FifthQuestionPartOne, mainMenuService::processFifthQuestionPartOne);
         methods.put(State.SixthQuestionPartOne, mainMenuService::processSixthQuestionPartOne);
-        methods.put(State.SeventhQuestionPartOne, mainMenuService::processSeventhQuestionPartOne);
+        methods.put(State.SeventhQuestionPartOne, mainMenuService::processSeventhQuestionPartOne);*/
     }
 
-    public SendMessage processUpdate(String textData, TransmittedData transmittedData) throws Exception {
+    public SendPhoto processUpdate(String textData, TransmittedData transmittedData) throws Exception {
         return methods.get(transmittedData.getState()).processUpdate(textData, transmittedData);
     }
 

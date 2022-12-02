@@ -7,26 +7,24 @@ import org.example.util.DialogStringsStorage;
 import org.example.util.InlineKeyboardsMarkupStorage;
 import org.example.util.SystemStringsStorage;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 
 
+import java.io.File;
 
 import static org.example.statemachine.State.*;
 
 
 public class MainMenuService {
-    SendPhotoFromUser sendPhotoFromUser;
 
-    public MainMenuService() throws Exception {
-        sendPhotoFromUser = new SendPhotoFromUser();
-    }
+    public SendPhoto processCommandStart(String command, TransmittedData transmittedData) throws Exception {
 
-    public SendMessage processCommandStart(String command, TransmittedData transmittedData) throws Exception {
-
-        SendMessage message = new SendMessage();
+        SendPhoto message = new SendPhoto();
         message.setChatId(transmittedData.getChatId());
 
         if (!command.equals(SystemStringsStorage.CommandStart)) {
-            message.setText(DialogStringsStorage.CommandStartError);
+            message.setCaption(DialogStringsStorage.CommandStartError);
             return message;
         }
 
@@ -34,7 +32,10 @@ public class MainMenuService {
 
         String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByText().getText();
 
-        message.setText(questionOne);
+        InputFile inputFile = new InputFile(new File("1Witcher.jpg"));
+        message.setPhoto(inputFile);
+        message.setCaption(questionOne);
+
         //sendPhotoFromUser.SendPhotoCommandStart(transmittedData.getChatId());
 
         message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionOne());
@@ -43,9 +44,9 @@ public class MainMenuService {
 
     }
 
-    public SendMessage processFirstQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
+    public SendPhoto processFirstQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
 
-        SendMessage message = new SendMessage();
+        SendPhoto message = new SendPhoto();
         message.setChatId(transmittedData.getChatId());
 
         if (callBackData.equals(ButtonsStorageWitcher.AnswerOneQuestionOne.getCallBackData())) {
@@ -53,7 +54,10 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextTwo().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextFour().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            InputFile inputFile = new InputFile(new File("1Witcher.jpg"));
+            message.setPhoto(inputFile);
+
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionTwo());
             transmittedData.setState(SecondQuestionPartOne);
 
@@ -64,7 +68,10 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextThree().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextFour().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            InputFile inputFile = new InputFile(new File("1Witcher.jpg"));
+            message.setPhoto(inputFile);
+
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionTwo());
             transmittedData.setState(SecondQuestionPartOne);
 
@@ -73,7 +80,7 @@ public class MainMenuService {
         throw new Exception("Некорректный ввод");
     }
 
-    public SendMessage processSecondQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
+    /*public SendMessage processSecondQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
 
         SendMessage message = new SendMessage();
         message.setChatId(transmittedData.getChatId());
@@ -275,7 +282,7 @@ public class MainMenuService {
         }
 
         throw new Exception("Некорректный ввод");
-    }
+    }*/
 }
 
 
