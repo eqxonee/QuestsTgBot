@@ -9,15 +9,18 @@ import org.example.util.SystemStringsStorage;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 
-import java.sql.SQLException;
-
 
 import static org.example.statemachine.State.*;
 
 
 public class MainMenuService {
+    SendPhotoFromUser sendPhotoFromUser;
 
-    public SendMessage processCommandStart(String command, TransmittedData transmittedData) throws SQLException {
+    public MainMenuService() throws Exception {
+        sendPhotoFromUser = new SendPhotoFromUser();
+    }
+
+    public SendMessage processCommandStart(String command, TransmittedData transmittedData) throws Exception {
 
         SendMessage message = new SendMessage();
         message.setChatId(transmittedData.getChatId());
@@ -28,9 +31,12 @@ public class MainMenuService {
         }
 
         transmittedData.setState(FirstQuestionPartOne);
+
         String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByText().getText();
 
         message.setText(questionOne);
+        //sendPhotoFromUser.SendPhotoCommandStart(transmittedData.getChatId());
+
         message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionOne());
 
         return message;
@@ -73,6 +79,7 @@ public class MainMenuService {
         message.setChatId(transmittedData.getChatId());
 
         if (callBackData.equals(ButtonsStorageWitcher.AnswerOneQuestionTwo.getCallBackData())){
+
 
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextFive().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextSeven().getText();
@@ -261,6 +268,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextTwentyTree().getText();
 
             message.setText(questionOne);
+            transmittedData.setState(WaitingCommandStart);
 
             return message;
 
