@@ -4,7 +4,7 @@ import org.example.service.handlers.MainMenuService;
 import org.example.service.handlers.StaticService;
 import org.example.statemachine.State;
 import org.example.statemachine.TransmittedData;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +33,7 @@ public class ServiceManager {
         methods.put(State.SeventhQuestionPartOne, mainMenuService::processSeventhQuestionPartOne);
     }
 
-    public SendMessage processUpdate(String textData, TransmittedData transmittedData) throws Exception {
+    public SendPhoto processUpdate(String textData, TransmittedData transmittedData) throws Exception {
         return methods.get(transmittedData.getState()).processUpdate(textData, transmittedData);
     }
 

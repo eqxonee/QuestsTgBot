@@ -7,26 +7,24 @@ import org.example.util.DialogStringsStorage;
 import org.example.util.InlineKeyboardsMarkupStorage;
 import org.example.util.SystemStringsStorage;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 
 
+import java.io.File;
 
 import static org.example.statemachine.State.*;
 
 
 public class MainMenuService {
-    SendPhotoFromUser sendPhotoFromUser;
 
-    public MainMenuService() throws Exception {
-        sendPhotoFromUser = new SendPhotoFromUser();
-    }
+    public SendPhoto processCommandStart(String command, TransmittedData transmittedData) throws Exception {
 
-    public SendMessage processCommandStart(String command, TransmittedData transmittedData) throws Exception {
-
-        SendMessage message = new SendMessage();
+        SendPhoto message = new SendPhoto();
         message.setChatId(transmittedData.getChatId());
 
         if (!command.equals(SystemStringsStorage.CommandStart)) {
-            message.setText(DialogStringsStorage.CommandStartError);
+            message.setCaption(DialogStringsStorage.CommandStartError);
             return message;
         }
 
@@ -34,8 +32,10 @@ public class MainMenuService {
 
         String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByText().getText();
 
-        message.setText(questionOne);
-        //sendPhotoFromUser.SendPhotoCommandStart(transmittedData.getChatId());
+        InputFile inputFile = new InputFile(new File("1Witcher.jpg"));
+        message.setPhoto(inputFile);
+
+        message.setCaption(questionOne);
 
         message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionOne());
 
@@ -43,9 +43,9 @@ public class MainMenuService {
 
     }
 
-    public SendMessage processFirstQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
+    public SendPhoto processFirstQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
 
-        SendMessage message = new SendMessage();
+        SendPhoto message = new SendPhoto();
         message.setChatId(transmittedData.getChatId());
 
         if (callBackData.equals(ButtonsStorageWitcher.AnswerOneQuestionOne.getCallBackData())) {
@@ -53,7 +53,10 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextTwo().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextFour().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            InputFile inputFile = new InputFile(new File("2Witcher.jpg"));
+            message.setPhoto(inputFile);
+
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionTwo());
             transmittedData.setState(SecondQuestionPartOne);
 
@@ -64,7 +67,10 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextThree().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextFour().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            InputFile inputFile = new InputFile(new File("3Witcher.jpg"));
+            message.setPhoto(inputFile);
+
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionTwo());
             transmittedData.setState(SecondQuestionPartOne);
 
@@ -73,9 +79,9 @@ public class MainMenuService {
         throw new Exception("Некорректный ввод");
     }
 
-    public SendMessage processSecondQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
+    public SendPhoto processSecondQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
 
-        SendMessage message = new SendMessage();
+        SendPhoto message = new SendPhoto();
         message.setChatId(transmittedData.getChatId());
 
         if (callBackData.equals(ButtonsStorageWitcher.AnswerOneQuestionTwo.getCallBackData())){
@@ -84,7 +90,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextFive().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextSeven().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionThree());
             transmittedData.setState(ThirdQuestionPartOne);
 
@@ -94,7 +100,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextSix().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextSeven().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionThree());
             transmittedData.setState(ThirdQuestionPartOne);
 
@@ -104,9 +110,9 @@ public class MainMenuService {
 
     }
 
-    public SendMessage processThirdQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
+    public SendPhoto processThirdQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
 
-        SendMessage message = new SendMessage();
+        SendPhoto message = new SendPhoto();
         message.setChatId(transmittedData.getChatId());
 
         if (callBackData.equals(ButtonsStorageWitcher.AnswerOneQuestionThree.getCallBackData())){
@@ -114,7 +120,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextEight().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextTwelve().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionFour());
             transmittedData.setState(FourthQuestionPartOne);
 
@@ -125,7 +131,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextNine().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextTwelve().getText();
 
-            message.setText(questionOne + "\n" + "\n" +questionOne2);
+            message.setCaption(questionOne + "\n" + "\n" +questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionFour());
             transmittedData.setState(FourthQuestionPartOne);
 
@@ -136,7 +142,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextTen().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextTwelve().getText();
 
-            message.setText(questionOne + "\n" + "\n" +questionOne2);
+            message.setCaption(questionOne + "\n" + "\n" +questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionFour());
             transmittedData.setState(FourthQuestionPartOne);
 
@@ -147,7 +153,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextEleven().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextTwelve().getText();
 
-            message.setText(questionOne + "\n" + "\n" +questionOne2);
+            message.setCaption(questionOne + "\n" + "\n" +questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionFour());
             transmittedData.setState(FourthQuestionPartOne);
 
@@ -157,9 +163,9 @@ public class MainMenuService {
 
     }
 
-    public SendMessage processFourthQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
+    public SendPhoto processFourthQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
 
-        SendMessage message = new SendMessage();
+        SendPhoto message = new SendPhoto();
         message.setChatId(transmittedData.getChatId());
 
         if (callBackData.equals(ButtonsStorageWitcher.AnswerOneQuestionFour.getCallBackData())) {
@@ -167,7 +173,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByThirteen().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextFifteen().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionFive());
             transmittedData.setState(FifthQuestionPartOne);
 
@@ -178,7 +184,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextFourteen().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextFifteen().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionFive());
             transmittedData.setState(FifthQuestionPartOne);
 
@@ -188,9 +194,9 @@ public class MainMenuService {
         throw new Exception("Некорректный ввод");
     }
 
-    public SendMessage processFifthQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
+    public SendPhoto processFifthQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
 
-        SendMessage message = new SendMessage();
+        SendPhoto message = new SendPhoto();
         message.setChatId(transmittedData.getChatId());
 
         if (callBackData.equals(ButtonsStorageWitcher.AnswerOneQuestionFive.getCallBackData())){
@@ -198,7 +204,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextSixteen().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextEighteen().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionSix());
             transmittedData.setState(SixthQuestionPartOne);
 
@@ -209,7 +215,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextSeventeen().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextEighteen().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionSix());
             transmittedData.setState(SixthQuestionPartOne);
 
@@ -219,9 +225,9 @@ public class MainMenuService {
 
         throw new Exception("Некорректный ввод");
     }
-    public SendMessage processSixthQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
+    public SendPhoto processSixthQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
 
-        SendMessage message = new SendMessage();
+        SendPhoto message = new SendPhoto();
         message.setChatId(transmittedData.getChatId());
 
         if (callBackData.equals(ButtonsStorageWitcher.AnswerOneQuestionSix.getCallBackData())){
@@ -229,7 +235,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextNineteen().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextTwentyOne().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionSeven());
             transmittedData.setState(SeventhQuestionPartOne);
 
@@ -240,7 +246,7 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextTwenty().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextTwentyOne().getText();
 
-            message.setText(questionOne + "\n" + "\n" + questionOne2);
+            message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionSeven());
             transmittedData.setState(SeventhQuestionPartOne);
 
@@ -250,16 +256,16 @@ public class MainMenuService {
 
         throw new Exception("Некорректный ввод");
     }
-    public SendMessage processSeventhQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
+    public SendPhoto processSeventhQuestionPartOne(String callBackData, TransmittedData transmittedData) throws Exception {
 
-        SendMessage message = new SendMessage();
+        SendPhoto message = new SendPhoto();
         message.setChatId(transmittedData.getChatId());
 
         if (callBackData.equals(ButtonsStorageWitcher.AnswerOneQuestionSeven.getCallBackData())){
 
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextTwentyTwo().getText();
 
-            message.setText(questionOne);
+            message.setCaption(questionOne);
 
             return message;
 
@@ -267,7 +273,7 @@ public class MainMenuService {
 
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextTwentyTree().getText();
 
-            message.setText(questionOne);
+            message.setCaption(questionOne);
             transmittedData.setState(WaitingCommandStart);
 
             return message;

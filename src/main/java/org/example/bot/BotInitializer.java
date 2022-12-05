@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
@@ -50,7 +51,7 @@ public class BotInitializer extends TelegramLongPollingBot {
             }
             logger.info(String.format("Input: %s:%d:%d:%s",updateType,chatId,messageId,textData));
 
-            SendMessage message = chatRouter.route(chatId, textData);
+            SendPhoto message = chatRouter.route(chatId, textData);
             InlineKeyboardMarkup inlineKeyboardMarkup = (InlineKeyboardMarkup) message.getReplyMarkup();
 
             String keyboardAsString = "Клавиатуры в данном сообщении нет";
@@ -63,7 +64,7 @@ public class BotInitializer extends TelegramLongPollingBot {
 
                 keyboardAsString = stringBuilder.toString();
             }
-            logger.info(String.format("OUTPUT: %d:%d\ntext=%s\nkeyboard=%s", chatId, messageId, message.getText(), keyboardAsString));
+            logger.info(String.format("OUTPUT: %d:%d\ntext=%s\nkeyboard=%s", chatId, messageId, message.getCaption(), keyboardAsString));
 
             logger.info(String.format("Error: %s:%d:%d:%s",updateType,chatId,messageId,textData));
 

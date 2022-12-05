@@ -5,17 +5,18 @@ import org.example.statemachine.State;
 import org.example.util.DialogStringsStorage;
 import org.example.util.InlineKeyboardsMarkupStorage;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 
 
 public class StaticService {
-    public SendMessage processCommandReset(TransmittedData transmittedData) {
+    public SendPhoto processCommandReset(TransmittedData transmittedData) {
         transmittedData.setState(State.WaitingCommandStart);
 
         transmittedData.getDataStorage().clear();
 
-        SendMessage message = new SendMessage();
+        SendPhoto message = new SendPhoto();
         message.setChatId(transmittedData.getChatId());
-        message.setText(DialogStringsStorage.CommandStartOK);
+        message.setCaption(DialogStringsStorage.CommandStartOK);
         //message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupMenuMain());
 
         return message;
