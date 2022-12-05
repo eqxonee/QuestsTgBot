@@ -90,6 +90,9 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextFive().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextSeven().getText();
 
+            InputFile inputFile = new InputFile(new File("4Witcher.jpg"));
+            message.setPhoto(inputFile);
+
             message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionThree());
             transmittedData.setState(ThirdQuestionPartOne);
@@ -99,6 +102,9 @@ public class MainMenuService {
 
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextSix().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextSeven().getText();
+
+            InputFile inputFile = new InputFile(new File("5Witcher.jpg"));
+            message.setPhoto(inputFile);
 
             message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionThree());
@@ -120,6 +126,9 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextEight().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextTwelve().getText();
 
+            InputFile inputFile = new InputFile(new File("6Witcher.jpg"));
+            message.setPhoto(inputFile);
+
             message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionFour());
             transmittedData.setState(FourthQuestionPartOne);
@@ -130,6 +139,9 @@ public class MainMenuService {
 
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextNine().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextTwelve().getText();
+
+            InputFile inputFile = new InputFile(new File("7Witcher.jpg"));
+            message.setPhoto(inputFile);
 
             message.setCaption(questionOne + "\n" + "\n" +questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionFour());
@@ -142,6 +154,9 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextTen().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextTwelve().getText();
 
+            InputFile inputFile = new InputFile(new File("8Witcher.jpg"));
+            message.setPhoto(inputFile);
+
             message.setCaption(questionOne + "\n" + "\n" +questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionFour());
             transmittedData.setState(FourthQuestionPartOne);
@@ -152,6 +167,9 @@ public class MainMenuService {
 
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextEleven().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextTwelve().getText();
+
+            InputFile inputFile = new InputFile(new File("9Witcher.jpg"));
+            message.setPhoto(inputFile);
 
             message.setCaption(questionOne + "\n" + "\n" +questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionFour());
@@ -173,6 +191,9 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByThirteen().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextFifteen().getText();
 
+            InputFile inputFile = new InputFile(new File("10Witcher.jpg"));
+            message.setPhoto(inputFile);
+
             message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionFive());
             transmittedData.setState(FifthQuestionPartOne);
@@ -183,6 +204,9 @@ public class MainMenuService {
 
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextFourteen().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextFifteen().getText();
+
+            InputFile inputFile = new InputFile(new File("11Witcher.jpg"));
+            message.setPhoto(inputFile);
 
             message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionFive());
@@ -204,6 +228,9 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextSixteen().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextEighteen().getText();
 
+            InputFile inputFile = new InputFile(new File("12Witcher.jpg"));
+            message.setPhoto(inputFile);
+
             message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionSix());
             transmittedData.setState(SixthQuestionPartOne);
@@ -214,6 +241,9 @@ public class MainMenuService {
 
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextSeventeen().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextEighteen().getText();
+
+            InputFile inputFile = new InputFile(new File("13Witcher.jpg"));
+            message.setPhoto(inputFile);
 
             message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionSix());
@@ -235,6 +265,9 @@ public class MainMenuService {
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextNineteen().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextTwentyOne().getText();
 
+            InputFile inputFile = new InputFile(new File("14Witcher.jpg"));
+            message.setPhoto(inputFile);
+
             message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionSeven());
             transmittedData.setState(SeventhQuestionPartOne);
@@ -245,6 +278,9 @@ public class MainMenuService {
 
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextTwenty().getText();
             String questionOne2 = DbManager.getInstance().getTableQuestions().getQuestionByTextTwentyOne().getText();
+
+            InputFile inputFile = new InputFile(new File("15Witcher.jpg"));
+            message.setPhoto(inputFile);
 
             message.setCaption(questionOne + "\n" + "\n" + questionOne2);
             message.setReplyMarkup(InlineKeyboardsMarkupStorage.GetInlineKeyboardMarkupQuestionSeven());
@@ -265,13 +301,20 @@ public class MainMenuService {
 
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextTwentyTwo().getText();
 
+            InputFile inputFile = new InputFile(new File("16Witcher.jpg"));
+            message.setPhoto(inputFile);
+
             message.setCaption(questionOne);
+            transmittedData.setState(WaitingCommandStart);
 
             return message;
 
         } else if (callBackData.equals(ButtonsStorageWitcher.AnswerTwoQuestionSeven.getCallBackData())) {
 
             String questionOne = DbManager.getInstance().getTableQuestions().getQuestionByTextTwentyTree().getText();
+
+            InputFile inputFile = new InputFile(new File("17Witcher.jpg"));
+            message.setPhoto(inputFile);
 
             message.setCaption(questionOne);
             transmittedData.setState(WaitingCommandStart);
