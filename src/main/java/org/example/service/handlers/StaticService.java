@@ -3,8 +3,6 @@ package org.example.service.handlers;
 import org.example.statemachine.TransmittedData;
 import org.example.statemachine.State;
 import org.example.util.DialogStringsStorage;
-import org.example.util.InlineKeyboardsMarkupStorage;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 
 

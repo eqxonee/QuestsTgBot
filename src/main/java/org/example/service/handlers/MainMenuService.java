@@ -6,7 +6,6 @@ import org.example.util.ButtonsStorageWitcher;
 import org.example.util.DialogStringsStorage;
 import org.example.util.InlineKeyboardsMarkupStorage;
 import org.example.util.SystemStringsStorage;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 

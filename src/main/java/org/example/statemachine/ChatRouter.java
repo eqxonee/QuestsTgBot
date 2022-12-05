@@ -4,7 +4,6 @@ import org.example.service.ServiceManager;
 import org.example.util.SystemStringsStorage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 
 import java.util.HashMap;
